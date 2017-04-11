@@ -38,8 +38,10 @@ open class RouteLeg: NSObject, NSSecureCoding {
             if let nodes = jsonAttributes["nodes"] {
                 openStreetMapNodeIdentifiers = nodes as? [Int64] ?? []
             }
-            if let congestion = jsonAttributes["congestion"] {
-                congestionLevels = congestion as? [Congestion] ?? []
+            if let congestion = jsonAttributes["congestion"] as? [String] {
+                congestionLevels = congestion.map {
+                    Congestion(description: $0)!
+                }
             }
         }
         
