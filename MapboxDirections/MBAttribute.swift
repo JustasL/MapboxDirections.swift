@@ -17,6 +17,8 @@ extension AttributeOptions: CustomStringConvertible {
             scope.update(with: .openStreetMapNodeIdentifier)
         case "speed":
             scope.update(with: .speed)
+        case "congestionLevel":
+            scope.update(with: .congestionLevel)
         default:
             return nil
         }
@@ -36,6 +38,9 @@ extension AttributeOptions: CustomStringConvertible {
         }
         if contains(.speed) {
             descriptions.append("speed")
+        }
+        if contains(.congestionLevel) {
+            descriptions.append("congestion")
         }
         return descriptions.joined(separator: ",")
     }
