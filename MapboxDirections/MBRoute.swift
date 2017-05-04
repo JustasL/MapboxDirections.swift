@@ -94,7 +94,7 @@ open class Route: NSObject, NSSecureCoding {
      
      Using the [Mapbox iOS SDK](https://www.mapbox.com/ios-sdk/) or [Mapbox macOS SDK](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/macos/), you can create an `MGLPolyline` object using these coordinates to display an overview of the route on an `MGLMapView`.
      */
-    open let coordinates: [CLLocationCoordinate2D]?
+    open var coordinates: [CLLocationCoordinate2D]?
     
     /**
      The number of coordinates.
@@ -146,21 +146,21 @@ open class Route: NSObject, NSSecureCoding {
      
      The value of this property accounts for the distance that the user must travel to traverse the path of the route. It is the sum of the `distance` properties of the route’s legs, not the sum of the direct distances between the route’s waypoints. You should not assume that the user would travel along this distance at a fixed speed.
      */
-    open let distance: CLLocationDistance
+    open var distance: CLLocationDistance
     
     /**
      The route’s expected travel time, measured in seconds.
      
      The value of this property reflects the time it takes to traverse the entire route under ideal conditions. It is the sum of the `expectedTravelTime` properties of the route’s legs. You should not assume that the user would travel along the route at a fixed speed. The actual travel time may vary based on the weather, traffic conditions, road construction, and other variables. If the route makes use of a ferry or train, the actual travel time may additionally be subject to the schedules of those services.
      */
-    open let expectedTravelTime: TimeInterval
+    open var expectedTravelTime: TimeInterval
     
     /**
      `RouteOptions` used to create the directions request.
      
      The route options object’s profileIdentifier property reflects the primary mode of transportation used for the route. Individual steps along the route might use different modes of transportation as necessary.
      */
-    open let routeOptions: RouteOptions
+    open var routeOptions: RouteOptions
 }
 
 // MARK: Support for Directions API v4
