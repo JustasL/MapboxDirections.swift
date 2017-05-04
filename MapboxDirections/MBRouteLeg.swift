@@ -116,14 +116,14 @@ open class RouteLeg: NSObject, NSSecureCoding {
      
      Unless this is the first leg of the route, the source of this leg is the same as the destination of the previous leg.
      */
-    open let source: Waypoint
+    open var source: Waypoint
     
     /**
      The endpoint of the route leg.
      
      Unless this is the last leg of the route, the destination of this leg is the same as the source of the next leg.
      */
-    open let destination: Waypoint
+    open var destination: Waypoint
     
     /**
      An array of one or more `RouteStep` objects representing the steps for traversing this leg of the route.
@@ -132,14 +132,14 @@ open class RouteLeg: NSObject, NSSecureCoding {
      
      This array is empty if the `includesSteps` property of the original `RouteOptions` object is set to `false`.
      */
-    open let steps: [RouteStep]
+    open var steps: [RouteStep]
     
     /**
      An array containing the distance (measured in meters) between each coordinate in the route leg geometry.
      
      This property is set if the `RouteOptions.attributeOptions` property contains `.distance`.
      */
-    open let segmentDistances: [CLLocationDistance]?
+    open var segmentDistances: [CLLocationDistance]?
     
     /**
      An array containing the expected travel time (measured in seconds) between each coordinate in the route leg geometry.
@@ -148,7 +148,7 @@ open class RouteLeg: NSObject, NSSecureCoding {
      
      This property is set if the `RouteOptions.attributeOptions` property contains `.expectedTravelTime`.
      */
-    open let expectedSegmentTravelTimes: [TimeInterval]?
+    open var expectedSegmentTravelTimes: [TimeInterval]?
     
     /**
      An array containing the expected average speed (measured in meters per second) between each coordinate in the route leg geometry.
@@ -157,7 +157,7 @@ open class RouteLeg: NSObject, NSSecureCoding {
      
      This property is set if the `RouteOptions.attributeOptions` property contains `.speed`.
      */
-    open let segmentSpeeds: [CLLocationSpeed]?
+    open var segmentSpeeds: [CLLocationSpeed]?
     
     /**
      An array containing [OpenStreetMap node identifiers](https://wiki.openstreetmap.org/wiki/Node), one for each coordinate along the route geometry.
@@ -175,7 +175,7 @@ open class RouteLeg: NSObject, NSSecureCoding {
      
      The leg’s name does not identify the start and end points of the leg. To distinguish one leg from another within the same route, concatenate the `name` properties of the `source` and `destination` waypoints.
      */
-    open let name: String
+    open var name: String
     
     open override var description: String {
         return name
@@ -186,21 +186,21 @@ open class RouteLeg: NSObject, NSSecureCoding {
      
      The value of this property accounts for the distance that the user must travel to arrive at the destination from the source. It is not the direct distance between the source and destination, nor should not assume that the user would travel along this distance at a fixed speed.
      */
-    open let distance: CLLocationDistance
+    open var distance: CLLocationDistance
     
     /**
      The route leg’s expected travel time, measured in seconds.
      
      The value of this property reflects the time it takes to traverse the route leg under ideal conditions. You should not assume that the user would travel along the route leg at a fixed speed. The actual travel time may vary based on the weather, traffic conditions, road construction, and other variables. If the route leg makes use of a ferry or train, the actual travel time may additionally be subject to the schedules of those services.
      */
-    open let expectedTravelTime: TimeInterval
+    open var expectedTravelTime: TimeInterval
     
     /**
      A string specifying the primary mode of transportation for the route leg.
      
      The value of this property is `MBDirectionsProfileIdentifierAutomobile`, `MBDirectionsProfileIdentifierAutomobileAvoidingTraffic`, `MBDirectionsProfileIdentifierCycling`, or `MBDirectionsProfileIdentifierWalking`, depending on the `profileIdentifier` property of the original `RouteOptions` object. This property reflects the primary mode of transportation used for the route leg. Individual steps along the route leg might use different modes of transportation as necessary.
      */
-    open let profileIdentifier: MBDirectionsProfileIdentifier
+    open var profileIdentifier: MBDirectionsProfileIdentifier
 }
 
 // MARK: Support for Directions API v4
