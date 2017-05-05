@@ -639,7 +639,7 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      Using the [Mapbox iOS SDK](https://www.mapbox.com/ios-sdk/) or [Mapbox macOS SDK](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/macos/), you can create an `MGLPolyline` object using these coordinates to display a portion of a route on an `MGLMapView`.
      */
-    open let coordinates: [CLLocationCoordinate2D]?
+    open var coordinates: [CLLocationCoordinate2D]?
     
     /**
      The number of coordinates.
@@ -686,7 +686,7 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      - note: If you use MapboxDirections.swift with the Mapbox Directions API, this property is formatted for display to the user. If you use OSRM directly, this property contains a basic string that only includes the maneuver type and direction. Use [osrm-text-instructions](https://github.com/Project-OSRM/osrm-text-instructions) to construct a complete instruction string for display.
      */
-    open let instructions: String
+    open var instructions: String
     
     open override var description: String {
         return instructions
