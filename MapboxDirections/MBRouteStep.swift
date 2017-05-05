@@ -695,14 +695,14 @@ open class RouteStep: NSObject, NSSecureCoding {
     /**
      The user’s heading immediately before performing the maneuver.
      */
-    open let initialHeading: CLLocationDirection?
+    open var initialHeading: CLLocationDirection?
     
     /**
      The user’s heading immediately after performing the maneuver.
      
      The value of this property may differ from the user’s heading after traveling along the road past the maneuver.
      */
-    open let finalHeading: CLLocationDirection?
+    open var finalHeading: CLLocationDirection?
     
     /**
      The type of maneuver required for beginning this step.
@@ -712,12 +712,12 @@ open class RouteStep: NSObject, NSSecureCoding {
     /**
      Additional directional information to clarify the maneuver type.
      */
-    open let maneuverDirection: ManeuverDirection?
+    open var maneuverDirection: ManeuverDirection?
     
     /**
      The location of the maneuver at the beginning of this step.
      */
-    open let maneuverLocation: CLLocationCoordinate2D
+    open var maneuverLocation: CLLocationCoordinate2D
     
     /**
      The number of exits from the previous maneuver up to and including this step’s maneuver.
@@ -726,7 +726,7 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      In some cases, the number of exits leading to a maneuver may be more useful to the user than the distance to the maneuver.
      */
-    open let exitIndex: Int?
+    open var exitIndex: Int?
     
     /**
      The names of the roundabout exit.
@@ -735,7 +735,7 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      If you display a name to the user, you may need to abbreviate common words like “East” or “Boulevard” to ensure that it fits in the allotted space.
      */
-    public let exitNames: [String]?
+    public var exitNames: [String]?
     
     // MARK: Getting Details About the Approach to the Next Maneuver
     
@@ -744,14 +744,14 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      The value of this property accounts for the distance that the user must travel to go from this step’s maneuver location to the next step’s maneuver location. It is not the sum of the direct distances between the route’s waypoints, nor should you assume that the user would travel along this distance at a fixed speed.
      */
-    open let distance: CLLocationDistance
+    open var distance: CLLocationDistance
     
     /**
      The step’s expected travel time, measured in seconds.
      
      The value of this property reflects the time it takes to go from this step’s maneuver location to the next step’s maneuver location under ideal conditions. You should not assume that the user would travel along the step at a fixed speed. The actual travel time may vary based on the weather, traffic conditions, road construction, and other variables. If the step makes use of a ferry or train, the actual travel time may additionally be subject to the schedules of those services.
      */
-    open let expectedTravelTime: TimeInterval
+    open var expectedTravelTime: TimeInterval
     
     /**
      The names of the road or path leading from this step’s maneuver to the next step’s maneuver.
@@ -760,7 +760,7 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      If the maneuver is a roundabout maneuver, the outlet to take is named in the `exitNames` property; the `names` property is only set for large roundabouts that have their own names.
      */
-    open let names: [String]?
+    open var names: [String]?
     
     /**
      Any route reference codes assigned to the road or path leading from this step’s maneuver to the next step’s maneuver.
@@ -769,7 +769,7 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      If a highway ramp is part of a numbered route, its reference code is contained in this property. On the other hand, guide signage for a highway ramp usually indicates route reference codes of the adjoining road; use the `destinationCodes` property for those route reference codes.
      */
-    open let codes: [String]?
+    open var codes: [String]?
     
     // MARK: Getting Additional Step Details
     
@@ -778,7 +778,7 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      This step may use a different mode of transportation than the overall route.
      */
-    open let transportType: TransportType?
+    open var transportType: TransportType?
     
     /**
      Any route reference codes that appear on guide signage for the road leading from this step’s maneuver to the next step’s maneuver.
@@ -787,21 +787,21 @@ open class RouteStep: NSObject, NSSecureCoding {
      
      A route reference code commonly consists of an alphabetic network code, a space or hyphen, and a route number. You should not assume that the network code is globally unique: for example, a network code of “NH” may indicate a “National Highway” or “New Hampshire”. Moreover, a route number may not even uniqely identify a route within a given network. A destination code for a divided road is often suffixed with the cardinal direction of travel, for example “I 80 East”.
      */
-    public let destinationCodes: [String]?
+    public var destinationCodes: [String]?
     
     /**
      Destinations, such as [control cities](https://en.wikipedia.org/wiki/Control_city), that appear on guide signage for the road leading from this step’s maneuver to the next step’s maneuver.
      
      This property is typically available in steps leading to or from a freeway or expressway.
      */
-    open let destinations: [String]?
+    open var destinations: [String]?
     
     /**
      An array of intersections along the step.
      
      Each item in the array corresponds to a cross street, starting with the intersection at the maneuver location indicated by the coordinates property and continuing with each cross street along the step.
     */
-    public let intersections: [Intersection]?
+    public var intersections: [Intersection]?
 }
 
 // MARK: Support for Directions API v4
