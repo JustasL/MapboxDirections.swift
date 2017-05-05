@@ -707,7 +707,7 @@ open class RouteStep: NSObject, NSSecureCoding {
     /**
      The type of maneuver required for beginning this step.
      */
-    open let maneuverType: ManeuverType?
+    open var maneuverType: ManeuverType?
     
     /**
      Additional directional information to clarify the maneuver type.
