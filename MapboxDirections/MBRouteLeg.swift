@@ -135,6 +135,11 @@ open class RouteLeg: NSObject, NSSecureCoding {
     open var steps: [RouteStep]
     
     /**
+     DA
+     */
+    open var mainManeuverLocations: [CLLocationCoordinate2D] = []
+    
+    /**
      An array containing the distance (measured in meters) between each coordinate in the route leg geometry.
      
      This property is set if the `RouteOptions.attributeOptions` property contains `.distance`.
